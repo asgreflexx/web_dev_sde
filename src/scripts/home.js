@@ -49,7 +49,6 @@ function renderBreedList(breedList) {
   const resultTable = document.getElementById('breedsTable');
   // eslint-disable-next-line no-unused-vars
   let resultHTML = '';
-
   // eslint-disable-next-line no-restricted-syntax
   for (const key of Object.keys(breedList)) {
     resultHTML += `<tr id="${key}"><td>${key}</td><td>`;
