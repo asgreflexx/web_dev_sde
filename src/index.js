@@ -1,3 +1,4 @@
+import 'material-icons/iconfont/material-icons.css';
 import './styles/style.scss';
 import './styles/index.css';
 // eslint-disable-next-line no-unused-vars
@@ -17,7 +18,6 @@ function openResponsiveMenu() {
 }
 
 function onClickMenuItem(el) {
-  console.log(homePage);
   // eslint-disable-next-line no-unused-vars,no-undef
   const navElements = document.getElementsByName('navlink');
   // eslint-disable-next-line no-param-reassign,no-return-assign
@@ -29,7 +29,6 @@ function onClickMenuItem(el) {
     // eslint-disable-next-line no-param-reassign
     el.className += 'active';
   }
-
   // eslint-disable-next-line no-unused-vars,no-undef
   const app = document.getElementById('app');
   console.log(el.id);
@@ -37,6 +36,8 @@ function onClickMenuItem(el) {
   switch (el.id) {
     case 'home':
       app.innerHTML = homePage;
+      // eslint-disable-next-line no-undef
+      getBreedList();
       break;
     case 'about':
       app.innerHTML = aboutPage;
@@ -49,7 +50,13 @@ function onClickMenuItem(el) {
       break;
   }
 }
-
+// eslint-disable-next-line no-undef
+window.addEventListener('load', () => {
+  // default navigation to home page
+  // eslint-disable-next-line no-undef
+  const homeElement = document.getElementById('home');
+  onClickMenuItem(homeElement);
+});
 // eslint-disable-next-line no-undef
 window.openResponsiveMenu = openResponsiveMenu;
 // eslint-disable-next-line no-undef
