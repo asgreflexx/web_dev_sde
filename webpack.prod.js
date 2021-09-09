@@ -5,12 +5,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'production',
     // 1
-    // Use the src/index.js file as entry point to bundle it.
-    // If the src/index.js file imports other JS files,
+    // Use the src/index.scripts file as entry point to bundle it.
+    // If the src/index.scripts file imports other JS files,
     // bundle them as well
     entry: path.resolve(__dirname, './src/index.js'),
     // 2
-    // The bundles source code files shall result in a bundle.js file
+    // The bundles source code files shall result in a bundle.scripts file
     // in the /dist folder
     output: {
       path: path.resolve(__dirname, './dist'),

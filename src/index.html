@@ -10,7 +10,12 @@
   </head>
   <body>
     <h1><%= htmlWebpackPlugin.options.title %></h1>
-
+    <nav class="topnav" id="myTopnav">
+      <a href="#home" id="home" name="navlink" onclick="onClickMenuItem(this)">Home</a>
+      <a href="#about" id="about" name="navlink" onclick="onClickMenuItem(this)">About</a>
+      <a href="#doggos" id="doggos" name="navlink" onclick="onClickMenuItem(this)">Doggos</a>
+      <a href="javascript:void(0);" class="icon" onclick="openResponsiveMenu()">&#9776;</a>
+    </nav>
     <div id="app"></div>
   </body>
 </html>

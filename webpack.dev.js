@@ -1,4 +1,5 @@
 const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -6,16 +7,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     // 1
-    // Use the src/index.js file as entry point to bundle it.
-    // If the src/index.js file imports other JS files,
+    // Use the src/index.scripts file as entry point to bundle it.
+    // If the src/index.scripts file imports other JS files,
     // bundle them as well
-    entry: path.resolve(__dirname, './src/index.js'),
+    entry: [
+      path.resolve(__dirname, './src/index.js'),
+      path.resolve(__dirname, './src/scripts/about.js'),
+      path.resolve(__dirname, './src/scripts/doggos.js'),
+      path.resolve(__dirname, './src/scripts/home.js'),
+    ],
     // 2
-    // The bundles source code files shall result in a bundle.js file
+    // The bundles source code files shall result in a bundle.scripts file
     // in the /dist folder
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: 'bundle.js'
+      filename: 'bundle.js',
     },
     // 3
     // The /dist folder will be used to serve our application
@@ -40,6 +46,24 @@ module.exports = {
             'sass-loader',
           ],
         },
+        {
+          test: /\.(jpg|png)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'img/',
+                publicPath: 'img/',
+              }
+            }
+          ]
+        },
+        {
+          test: /\.html$/,
+          loader: 'html-loader',
+          exclude: path.resolve(__dirname, 'src/index.html'),
+        },
       ],
     },
     // 4
@@ -47,8 +71,8 @@ module.exports = {
     plugins: [
         //new CleanWebpackPlugin,
         new HtmlWebpackPlugin({
-        title: "Basic Webpack Setup",
+        title: 'The Doggos',
         template: path.resolve(__dirname, './src/index.html'),
-        })
+        }),
   ]
   };
